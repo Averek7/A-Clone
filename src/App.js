@@ -9,10 +9,12 @@ import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
 
 function App() {
-  const [dispatch] = useStateValue();
+  const [{}, dispatch] = useStateValue();
+
   useEffect(() => {
+    // will only run once when the app component loads...
+
     auth.onAuthStateChanged((authUser) => {
-      console.log(authUser.displayName);
       if (authUser) {
         dispatch({
           type: "SET_USER",
@@ -25,7 +27,7 @@ function App() {
         });
       }
     });
-  });
+  }, []);
 
   return (
     <>

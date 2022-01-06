@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "./firebase";
 import "./Signin.css";
+
 function Signin() {
+  const history = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const history = useNavigate();
+
   const signIn = (e) => {
     e.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)
       .then((auth) => {
-        console.log(auth);
         history("/");
       })
       .catch((err) => alert(err.message));
@@ -21,13 +22,13 @@ function Signin() {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((auth) => {
-        console.log(auth);
         if (auth) {
           history("/");
         }
       })
       .catch((err) => alert(err.message));
   };
+
   return (
     <>
       <div className="signin">
