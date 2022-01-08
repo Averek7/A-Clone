@@ -6,6 +6,7 @@ import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { Link } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
+// import { geolocated } from "react-geolocated";
 
 function Header() {
   const [{ basket, user }] = useStateValue();
@@ -15,6 +16,18 @@ function Header() {
       auth.signOut();
     }
   };
+
+  // const getLocation = () => {
+  //   return isGeolocationAvailable
+  //     ? isGeolocationEnabled
+  //       ? coords
+  //         ? console.log(
+  //             `Latitude ${coords.latitude} Longitude ${coords.longitude}`
+  //           )
+  //         : console.log(`Getting Location Data`)
+  //       : console.log(`Enable Location`)
+  //     : console.log(`Update Browser`);
+  // };
 
   return (
     <div className="header">
@@ -27,6 +40,7 @@ function Header() {
       </Link>
       <div className="header_nav">
         <div className="header_option">
+          {/* onClick={getLocation} */}
           <span className="header_lineOne">
             Hello
             <LocationOnIcon style={{ fontSize: "15px" }} />
