@@ -1,0 +1,40 @@
+[debug] [2022-01-13T06:44:51.821Z] ----------------------------------------------------------------------
+[debug] [2022-01-13T06:44:51.826Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ASUS\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-01-13T06:44:51.827Z] CLI Version:   10.1.0
+[debug] [2022-01-13T06:44:51.827Z] Platform:      win32
+[debug] [2022-01-13T06:44:51.827Z] Node Version:  v14.16.1
+[debug] [2022-01-13T06:44:51.830Z] Time:          Thu Jan 13 2022 12:14:51 GMT+0530 (India Standard Time)
+[debug] [2022-01-13T06:44:51.830Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-01-13T06:44:52.006Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-01-13T06:44:52.007Z] > authorizing via signed-in user (singhavanish2003@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Averek\JS\GithubReact\amazon
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-01-13T06:45:08.002Z] Using project from CLI flag: clone-477a3
+[debug] [2022-01-13T06:45:08.010Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/clone-477a3 [none]
+[debug] [2022-01-13T06:45:09.695Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/clone-477a3 200
+[debug] [2022-01-13T06:45:09.696Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/clone-477a3 {"projectId":"clone-477a3","projectNumber":"357252622849","displayName":"amazon-clone","name":"projects/clone-477a3","resources":{"hostingSite":"clone-477a3","realtimeDatabaseInstance":"clone-477a3-default-rtdb","storageBucket":"clone-477a3.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] i  Using project clone-477a3 (amazon-clone) 
+[info] 
+=== Emulators Setup

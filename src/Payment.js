@@ -1,5 +1,5 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import axios from "./axios";
+import axios from "./axios.js";
 import React, { useState, useEffect } from "react";
 import CurrencyFormat from "react-currency-format";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import CheckoutProduct from "./CheckoutProduct";
 import "./Payment.css";
 import { getBasketTotal } from "./reducer";
 import { useStateValue } from "./StateProvider";
+import { db } from "./firebase.js";
 
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -16,7 +17,7 @@ function Payment() {
   const elements = useElements();
 
   const [succeeded, setSucceeded] = useState(false);
-  const [processing, setProcessing] = useState(false);
+  const [processing, setProcessing] = useState("");
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setclientSecret] = useState(true);
@@ -33,6 +34,8 @@ function Payment() {
     getClientSecret();
   }, [basket]);
 
+  console.log(`The secret is`, clientSecret);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProcessing(true);
@@ -43,11 +46,24 @@ function Payment() {
         },
       })
       .then(({ paymentIntent }) => {
-        // paymentIntent = payment confirmation
+        // paymentIntent === Payment Confirmation
+        db.collection("users")
+          .doc(user?.uid)
+          .collection("orders")
+          .doc(paymentIntent.id)
+          .set({
+            basket: basket,
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+          });
 
         setSucceeded(true);
         setError(null);
         setProcessing(false);
+
+        dispatch({
+          type: "EMPTY_BASKET",
+        });
 
         history("/orders");
       });
